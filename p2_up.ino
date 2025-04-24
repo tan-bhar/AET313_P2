@@ -67,6 +67,23 @@ void loop() {
     Serial.println("off4");
   }
 
+    // Interaction 5: up melody plays at the end
+void playUpMelody() {
+  int melody[] = {392, 494, 392, 370, 370, 392, 494, 392, 330, 330, 392, 330, 294, 330, 494, 440, 330, 494, 440, 392, 330}; 
+  int duration = 400; 
+
+  for (int i = 0; i < 22; i++) {
+    tone(buzzerPin, melody[i], duration);
+    delay(duration);
+    noTone(buzzerPin);  // Make sure the buzzer stops between notes
+    delay(.01);          // A short silence between notes to avoid overlap
+  }
+  
+  noTone(buzzerPin);  // Final silence to stop any lingering signal
+}
+}
+
+
 
 
   
