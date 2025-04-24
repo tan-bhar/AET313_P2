@@ -29,7 +29,7 @@ void setup() {
 }
 
 void loop() {
-  // Interaction 1: 360 servo
+  // Interaction 1: 360 servo *** MODIFIED. USER MOVES MANUALLY INSTEAD (WHICH IS NEW INTERACTION 1) ***
   if (digitalRead(switch1) == HIGH) {
     servo360.write(86);
     Serial.println("on1");
@@ -56,6 +56,15 @@ void loop() {
     paradise.write(80);
     noTone(buzzerPin); // No melody if switch is off
     Serial.println("off3");
+  }
+
+  // Interaction 4: dug flapping (servo only)
+  if (digitalRead(switch4) == HIGH) {
+    dug.write(0);
+    Serial.println("on4");
+  } else {
+    dug.write(180);
+    Serial.println("off4");
   }
 
 
