@@ -1,29 +1,30 @@
 #include <Servo.h>
 
-const int switchPin = 5;  // Pin reading the cardboard switch state
-const int servoPin = 4;   // Servo motor control pin
+const int servo360Pin = 13;
+const int houseFlapPin = 11;
+const int paradisePin = 9;
+const int dugPin = 7;
+const int switch2 = 12;
+const int switch1 = 10;
+const int switch3 = 8;
+const int switch4 = 5;
+const int buzzerPin = 2; // Buzzer pin
 
-Servo myServo;
+Servo servo360;
+Servo houseFlap;
+Servo paradise;
+Servo dug;
 
 void setup() {
-    Serial.begin(9600);  // Initialize serial communication
-    pinMode(switchPin, INPUT_PULLUP);  // Use internal pull-up resistor
-    myServo.attach(servoPin);   // Attach servo
+  servo360.attach(servo360Pin);
+  houseFlap.attach(houseFlapPin);
+  paradise.attach(paradisePin);
+  dug.attach(dugPin);
+  pinMode(switch1, INPUT);
+  pinMode(switch2, INPUT); 
+  pinMode(switch3, INPUT);
+  pinMode(switch4, INPUT);
+  pinMode(buzzerPin, OUTPUT);
+  Serial.begin(9600);
 }
 
-void loop() {
-    int switchState = digitalRead(switchPin);  // Read the switch input
-    Serial.print("Switch State: ");
-    Serial.println(switchState);  // Debugging output
-
-    if (switchState == HIGH) {  // Adjusted for INPUT_PULLUP (LOW when ON)
-        Serial.println("Switch ON");
-        myServo.write(0);  // Rotate to 0 degrees
-        delay(500);        // Wait 500ms
-        myServo.write(180); // Rotate to 180 degrees
-        delay(500);        // Wait 500ms
-    } else {
-        Serial.println("Switch OFF");
-        myServo.write(0);  // Neutral position
-    }
-}
