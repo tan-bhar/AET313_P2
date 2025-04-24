@@ -28,3 +28,14 @@ void setup() {
   Serial.begin(9600);
 }
 
+void loop() {
+  // Interaction 1: 360 servo
+  if (digitalRead(switch1) == HIGH) {
+    servo360.write(86);
+    Serial.println("on1");
+  } else {
+    servo360.write(93);
+    Serial.println("off1");
+  }
+
+  
