@@ -38,4 +38,12 @@ void loop() {
     Serial.println("off1");
   }
 
-  
+  // Interaction 2: house flap
+  if (digitalRead(switch2) == HIGH) {
+    houseFlap.write(140);
+    Serial.println("on2");
+  } else {
+    houseFlap.write(20);
+    Serial.println("off2");
+  }
+
