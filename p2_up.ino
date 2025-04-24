@@ -47,3 +47,17 @@ void loop() {
     Serial.println("off2");
   }
 
+  // Interaction 3: paradise falls (servo + melody)
+  if (digitalRead(switch3) == HIGH) {
+    paradise.write(5);
+    playUpMelody(); // Play melody here now
+    Serial.println("on3");
+  } else {
+    paradise.write(80);
+    noTone(buzzerPin); // No melody if switch is off
+    Serial.println("off3");
+  }
+
+
+
+  
